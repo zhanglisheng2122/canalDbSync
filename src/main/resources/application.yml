@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    # Kafka服务地址
+    bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      # 指定一个默认的组名
+      group-id: consumer-group1
+      #序列化反序列化
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 批量抓取
+      batch-size: 65536
+      # 缓存容量
+      buffer-memory: 524288
+#canal配置
+canal:
+  host: 10.60.75.162 #host ip,不填默认为127.0.0.1
+  port: 11111 #端口号, 不填默认为11111
+  destination: dev.tcp.instance #不填默认为example
+  batchSize: 1000 #批次, 不填默认为1000
+  filter: neworiental_stu.entity_intervene_type #数据库,表过滤器,多个过滤器用逗号隔开 不填默认为全部数据库和表
+  custom: true #true 为自定义表处理 , false为全局统一处理
